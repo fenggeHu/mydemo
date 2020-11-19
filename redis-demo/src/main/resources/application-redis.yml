@@ -1,0 +1,16 @@
+server:
+  port: 7101
+
+spring:
+  application:
+    name: spring-boot-redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    timeout: 10s
+    pool:
+      max-connect: 2
+      max-active: 10
+      max-wait: 1
+
