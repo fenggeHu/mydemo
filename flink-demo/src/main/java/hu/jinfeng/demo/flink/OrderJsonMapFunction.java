@@ -1,7 +1,7 @@
 package hu.jinfeng.demo.flink;
 
 import com.google.gson.Gson;
-import hu.jinfeng.demo.flink.task.OrderDO;
+import hu.jinfeng.demo.model.OrderDO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.functions.MapFunction;
 
