@@ -3,6 +3,7 @@ package hu.jinfeng.demo.model;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Author hujinfeng  @Date 2020/11/18
@@ -18,4 +19,6 @@ public class OrderDO implements Serializable {
     private double price;
 
     private String msg;
+
+    private Date orderDate;
 }
