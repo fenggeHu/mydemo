@@ -22,8 +22,9 @@ public class Kafka2PrintTask {
                 " 'topic' = 'order',\n" +
                 " 'properties.bootstrap.servers' = 'localhost:9092',\n" +
                 " 'format' = 'json',\n" +
-                " 'scan.startup.mode' = 'latest-offset'\n" +
+                " 'scan.startup.mode' = 'earliest-offset'\n" +   //earliest-offset 、 latest-offset
                 ")";
+        //
 
         //0, sink
         String sinkDDL = "CREATE TABLE print_sink (\n" +

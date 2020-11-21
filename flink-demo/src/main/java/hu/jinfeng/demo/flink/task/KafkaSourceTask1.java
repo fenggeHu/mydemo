@@ -34,6 +34,10 @@ public class KafkaSourceTask1 {
         properties.setProperty("bootstrap.servers", "192.168.2.201:9092");
 //        properties.setProperty("zookeeper.connect", "192.168.2.201:2181");
         properties.setProperty("group.id", "flink-group");
+        properties.setProperty("scan.startup.mode", "earliest-offset");
+        properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+
 
         String kafkaTopic = "demo";
         //1，连接数据源
@@ -45,26 +49,29 @@ public class KafkaSourceTask1 {
 
         DataStream<String> dataStream = env.addSource(consumer);
 //        dataStream.print();
-        dataStream.map(new MapFunction<String, OrderDO>() {
-            final transient Gson gson = new Gson();
-            @Override
-            public OrderDO map(String value) throws Exception {
-                OrderDO recorder = gson.fromJson(value, OrderDO.class);
-                return recorder;
-            }
-        })
-//        dataStream.flatMap(new OrderJsonFlatMapFunction())
+//        dataStream.rebalance().map(new MapFunction<String, OrderDO>() {
+////            final transient Gson gson = new Gson();
+//            @Override
+//            public OrderDO map(String value) throws Exception {
+////                System.out.println(value);
+//                OrderDO recorder = new Gson().fromJson(value, OrderDO.class);
+//                return recorder;
+//            }
+//        })
+        dataStream//.rebalance()
+                .flatMap(new OrderJsonFlatMapFunction())
                 .keyBy(value -> value.getItemId())
                 .timeWindow(Time.seconds(60), Time.seconds(6))
                 .sum("price")
-                .addSink(new SinkFunction() {
-                    @Override
-                    public void invoke(Object value, Context context) throws Exception {
-                        System.out.println(value);
-                        System.out.println("============context==========");
-                        System.out.println(context);
-                    }
-                });
+                .print();
+//                .addSink(new SinkFunction() {
+//                    @Override
+//                    public void invoke(Object value, Context context) throws Exception {
+//                        System.out.println(value);
+//                        System.out.println("============context==========");
+//                        System.out.println(context);
+//                    }
+//                });
 
         env.execute("Log message receive");
     }

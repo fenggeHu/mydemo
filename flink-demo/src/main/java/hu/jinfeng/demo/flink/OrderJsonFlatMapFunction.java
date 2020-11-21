@@ -11,12 +11,12 @@ import org.apache.flink.util.Collector;
  **/
 @Slf4j
 public class OrderJsonFlatMapFunction implements FlatMapFunction<String, OrderDO> {
-    private final transient Gson gson = new Gson();
+//    private final Gson gson = new Gson();
 
     @Override
     public void flatMap(String value, Collector<OrderDO> out) throws Exception {
         log.warn(value);
-        OrderDO recorder = gson.fromJson(value, OrderDO.class);
+        OrderDO recorder = new Gson().fromJson(value, OrderDO.class);
         out.collect(recorder);
     }
 }

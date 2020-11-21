@@ -12,15 +12,13 @@ import java.io.Serializable;
  **/
 @Slf4j
 public class OrderJsonMapFunction implements MapFunction<String, OrderDO>, Serializable {
-    //
-    private final transient Gson gson = new Gson();
 
     @Override
     public OrderDO map(String s) throws Exception {
         log.warn(s);
 
         try {
-            return gson.fromJson(s, OrderDO.class);
+            return new Gson().fromJson(s, OrderDO.class);
         } catch (Exception e) {
             log.error(s, e);
         }
