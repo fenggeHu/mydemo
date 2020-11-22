@@ -1,4 +1,4 @@
-package hu.jinfeng.demo;
+package hu.jinfeng.demo.util;
 
 /**
  * @Author hujinfeng  @Date 2020/11/20

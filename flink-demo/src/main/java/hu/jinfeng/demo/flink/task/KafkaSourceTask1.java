@@ -61,7 +61,7 @@ public class KafkaSourceTask1 {
         dataStream//.rebalance()
                 .flatMap(new OrderJsonFlatMapFunction())
                 .keyBy(value -> value.getItemId())
-                .timeWindow(Time.seconds(60), Time.seconds(6))
+//                .timeWindow(Time.seconds(60), Time.seconds(6))
                 .sum("price")
                 .print();
 //                .addSink(new SinkFunction() {

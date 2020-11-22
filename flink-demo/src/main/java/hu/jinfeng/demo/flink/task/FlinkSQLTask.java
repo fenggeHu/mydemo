@@ -6,7 +6,7 @@ package hu.jinfeng.demo.flink.task;
 public class FlinkSQLTask {
 
     public static void main(String[] args) {
-
+        String sourceDDL = "";
 
     }
 }
