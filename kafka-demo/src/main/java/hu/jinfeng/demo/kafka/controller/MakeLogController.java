@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Date;
 
 /**
@@ -37,6 +36,7 @@ public class MakeLogController {
             value.setItemId(1000000L + i);
             value.setPrice(Double.valueOf(String.format("%.2f", RandomUtils.nextDouble(10, 200))));
             value.setMsg("订单号:" + value.getId() +", 商品ID:" + value.getItemId());
+//            value.setOrderDate(new Timestamp(new Date().getTime()));
             value.setOrderDate(new Date());
             kafkaService.send(topic, null, gson.toJson(value));
 

@@ -21,6 +21,7 @@ import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * @Fixme date trans to timestamp 数据转换异常
  * @Author hujinfeng  @Date 2020/11/18
  **/
 public class FlinkSQLTask {
@@ -58,10 +59,9 @@ public class FlinkSQLTask {
                         "FROM order_source  " +
                         "GROUP BY TUMBLE(orderDate, INTERVAL '5' SECOND), itemId ";
 
-
         //5, 注册source和sink
         tEnv.executeSql(sourceDDL);
-        tEnv.executeSql(sinkDDL);
+//        tEnv.executeSql(sinkDDL);
 
         //6, sql查询
 //        String plan = tEnv.explainSql(querySQL);
