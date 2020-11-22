@@ -6,6 +6,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 
 import java.io.StringWriter;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * @Author hujinfeng  @Date 2020/11/22
@@ -13,7 +14,7 @@ import java.util.Map;
 public class VelocityEngineUtils {
 
     private final static VelocityEngine velocityEngine;
-    private final static String LOCAL_RESOURCE_PATH;
+    public final static String LOCAL_RESOURCE_PATH;
 
     static {
         velocityEngine = new VelocityEngine();
@@ -22,7 +23,7 @@ public class VelocityEngineUtils {
         velocityEngine.setProperty(RuntimeConstants.INPUT_ENCODING, "UTF-8");
         velocityEngine.setProperty(RuntimeConstants.OUTPUT_ENCODING, "UTF-8");
         velocityEngine.init();
-        LOCAL_RESOURCE_PATH = "";
+        LOCAL_RESOURCE_PATH = VelocityEngineUtils.class.getResource("/").getPath();
     }
 
     /**
@@ -62,9 +63,14 @@ public class VelocityEngineUtils {
         VelocityContext ctx = getVelocityContext(context);
         return parseTemplate(templateContent, ctx);
     }
+    public static String parseTemplate(String templateContent, Properties properties) {
+        VelocityContext ctx = getVelocityContext(properties);
+        return parseTemplate(templateContent, ctx);
+    }
 
     /**
      * 模板参数
+     *
      * @param context
      * @return
      */
@@ -72,6 +78,14 @@ public class VelocityEngineUtils {
         VelocityContext ctx = new VelocityContext();
         if (null != context) {
             context.forEach((k, v) -> ctx.put(k, v));
+        }
+        return ctx;
+    }
+
+    public static VelocityContext getVelocityContext(Properties properties) {
+        VelocityContext ctx = new VelocityContext();
+        if (null != properties) {
+            properties.forEach((k, v) -> ctx.put(k.toString(), v));
         }
         return ctx;
     }
