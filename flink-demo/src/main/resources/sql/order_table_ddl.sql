@@ -1,9 +1,9 @@
-CREATE TABLE kafka_source ( 
+CREATE TABLE order_source (
     id BIGINT ,
     itemId BIGINT ,
     price DOUBLE ,
-    msg STRING ,
-    orderDate  Date
+    msg STRING
+    ,orderDate  time
 ) WITH (
     'connector' = 'kafka-0.11',
     'topic' = 'order',
