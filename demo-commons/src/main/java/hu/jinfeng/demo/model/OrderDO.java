@@ -14,9 +14,9 @@ public class OrderDO implements Serializable {
 
     private long id;
 
-    private Long itemId;
+    private String itemId;
 
-    private double price;
+    private Double price;
 
     private String msg;
 

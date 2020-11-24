@@ -23,17 +23,17 @@ public class MakeLogController {
     private Gson gson = new Gson();
 
     /**
-     * 造kafka日志
+     * mock 订单数据 -- kafka日志
      */
     @GetMapping(value = "/order")
-    public String startLog(String topic, int num, int interval) throws InterruptedException {
+    public String order(String topic, int num, int interval) throws InterruptedException {
         if (interval < 1) {
             interval = 1000;
         }
         for (int i = 0; i < num; i++) {
             OrderDO value = new OrderDO();
             value.setId(System.currentTimeMillis());
-            value.setItemId(1000000L + i);
+            value.setItemId(String.valueOf(1000000L + i));
             value.setPrice(Double.valueOf(String.format("%.2f", RandomUtils.nextDouble(10, 200))));
             value.setMsg("订单号:" + value.getId() +", 商品ID:" + value.getItemId());
 //            value.setOrderDate(new Timestamp(new Date().getTime()));
