@@ -1,4 +1,4 @@
-package hu.jinfeng.demo.util;
+package hu.jinfeng.commons.utils;
 
 import java.io.*;
 import java.util.Collection;

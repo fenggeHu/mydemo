@@ -1,4 +1,4 @@
-package hu.jinfeng.demo.util;
+package hu.jinfeng.commons.utils;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
