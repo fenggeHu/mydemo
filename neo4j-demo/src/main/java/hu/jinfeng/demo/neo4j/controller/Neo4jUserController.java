@@ -1,5 +1,6 @@
 package hu.jinfeng.demo.neo4j.controller;
 
+import hu.jinfeng.demo.neo4j.dao.UserRepository;
 import hu.jinfeng.demo.neo4j.model.UserNode;
 import hu.jinfeng.demo.neo4j.model.UserRelation;
 import hu.jinfeng.demo.neo4j.service.UserService;
@@ -17,9 +18,21 @@ public class Neo4jUserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 不考虑严谨的分层，Controller中直接使用Repository
+     */
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/getNodeId")
+    public Long getUserNodeId(String name) {
+        return userRepository.getNodeIdByName(name);
+    }
+
     @GetMapping("/saveUser")
-    public String addUserNode(String name, Integer age) {
+    public String addUserNode(String userId, String name, Integer age) {
         UserNode userNode = new UserNode();
+        userNode.setUserId(userId);
         userNode.setName(name);
         userNode.setAge(age);
 

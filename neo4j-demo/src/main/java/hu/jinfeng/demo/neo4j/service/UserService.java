@@ -17,7 +17,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<UserNode> addUserNode(UserNode user) {
-        return userRepository.addUserNodeList(user.getName(), user.getAge());
+        return userRepository.createUserNode(user);
     }
 
     public List<UserRelation> addUserRelation(String firstName, String lastName){

@@ -13,7 +13,6 @@ import org.neo4j.ogm.annotation.Property;
 @Data
 @NodeEntity(label="User")
 public class UserNode {
-
     @Id
     private Long nodeId;
     @Property
