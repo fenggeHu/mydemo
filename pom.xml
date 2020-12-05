@@ -13,6 +13,7 @@
         <module>kafka-demo</module>
         <module>flink-demo</module>
         <module>demo-commons</module>
+        <module>neo4j-demo</module>
     </modules>
 
     <properties>
@@ -184,19 +185,31 @@
                 <version>0.14.0</version>
             </dependency>
 
-
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.58</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.velocity</groupId>
                 <artifactId>velocity</artifactId>
                 <version>1.7</version>
             </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
+        <!--dependency>
             <groupId>io.prometheus.jmx</groupId>
             <artifactId>jmx_prometheus_javaagent</artifactId>
+        </dependency-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
