@@ -1,7 +1,7 @@
 package hu.jinfeng.demo.flink.util;
 
-import hu.jinfeng.demo.util.FileUtils;
-import hu.jinfeng.demo.util.VelocityEngineUtils;
+import hu.jinfeng.commons.utils.FileUtils;
+import hu.jinfeng.commons.utils.VelocityEngineUtils;
 
 import java.util.Properties;
 

@@ -10,7 +10,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 /**
  * @Author hujinfeng  @Date 2020/11/19
  **/
-public class MultiSourceTask {
+public class SocketTextStreamSourceTask {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -27,6 +27,6 @@ public class MultiSourceTask {
                 .sum("price")
                 .print();
 
-        env.execute("MultiSourceTask running...");
+        env.execute(SocketTextStreamSourceTask.class.getName());
     }
 }

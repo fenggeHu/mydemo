@@ -14,6 +14,7 @@
         <module>flink-demo</module>
         <module>demo-commons</module>
         <module>neo4j-demo</module>
+        <module>elasticsearch-demo</module>
     </modules>
 
     <properties>
@@ -29,6 +30,7 @@
         <spring.boot.admin.version>2.3.0</spring.boot.admin.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <lettuce.version>5.3.5.RELEASE</lettuce.version>
+        <jackson.version>2.9.0</jackson.version>
 
         <flink.version>1.11.2</flink.version>
         <scala.binary.version>2.11</scala.binary.version>
@@ -186,14 +188,31 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>1.2.58</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.velocity</groupId>
                 <artifactId>velocity</artifactId>
                 <version>1.7</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>28.2-jre</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
 
 

@@ -16,7 +16,7 @@ public class OrderMapFunction implements MapFunction<String, OrderDO> {
         String[] split = s.split(",");
         OrderDO orderDO = new OrderDO();
         orderDO.setId(Long.valueOf(split[0]));
-        orderDO.setItemId(Long.valueOf(split[1].split(",")[1]));
+        orderDO.setItemId(split[1].split(",")[1]);
         orderDO.setPrice(Double.valueOf(split[2].split(",")[2]));
 
         return orderDO;
